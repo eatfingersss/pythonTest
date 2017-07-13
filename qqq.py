@@ -1,8 +1,5 @@
 import tkinter
 import os
-def AA():
-   #if  text=='欧拉欧拉欧拉':
-        text='木大木大木大'
 def processCancel():
     exit(0)
 def ScanAndPrint(list):

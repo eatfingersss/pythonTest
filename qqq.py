@@ -2,14 +2,21 @@ import tkinter
 import os
 def processCancel():
     exit(0)
+def key_it(event):
+    for i in dir(event):
+        Key.insert(0,i.value)
+def dir_it(list,event):
+    for i in dir(event):
+        list.insert(0,i)
+    key_it(event)
 def ScanAndPrint(list):
     for i in os.walk(PATH):
         #index=0
         if str(i)[3] != '\'': break
         j=i[1]
         k=i[2]
-        print(j)
-        print(k)
+        #print(j)
+        #print(k)
         #i = str(i)
         for name in j:
             list.insert(0,name)
@@ -17,8 +24,11 @@ def ScanAndPrint(list):
             list.insert(0,name)
         #list.insert(5,k)
     #return 0
+
 def DoubleClick(event):
+    #print(dir(event))
     print('按下了按钮!')
+    dir_it(Dir, event)
 i=0
 PATH='/'#路径变量
 
@@ -49,8 +59,17 @@ FileBox = tkinter.Listbox(f1)
 ScanAndPrint(FileBox)
 FileBox.bind('<Button-1>',DoubleClick)
 FileBox.grid()
-FileBox.grid_configure(column=0,row=1,columnspan=6,rowspan=9)
+FileBox.grid_configure(row=1,column=0,rowspan=1,columnspan=1,)
 #FileBox.place(width=800,height=500)
+
+Dir=tkinter.Listbox(f1)
+Dir.grid()
+Dir.grid_configure(row=1,column=1,rowspan=1,columnspan=1)
+Key=tkinter.Listbox(f1)
+Key.grid()
+Key.grid_configure(row=1,column=2,rowspan=1,columnspan=1)
+
+
 f1.pack()
 f2.pack(side='bottom')
 root.propagate(True)
